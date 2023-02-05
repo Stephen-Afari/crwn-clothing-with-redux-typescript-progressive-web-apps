@@ -3,6 +3,7 @@ import { signInWithGooglePopup ,createUserDocumentFromAuth,signInAuthUserWithEma
 import FormInput from '../form-input/form-input.component'
 import './sign-in-form.styles.scss'
 import Button from '../button/button.component'
+//import { Usercontext } from '../../contexts/user.context'
 
 const defaultFormFields = {
     email: "",
@@ -11,6 +12,7 @@ const defaultFormFields = {
 const SignInForm = ()=>{
     const [formFields,setFormFields]= useState(defaultFormFields)
     const { email, password} = formFields
+    //const {setCurrentUser}= useContext(Usercontext)
 
     console.log(formFields)
 
@@ -18,8 +20,10 @@ const SignInForm = ()=>{
         setFormFields(defaultFormFields)
     }
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        
+        await signInWithGooglePopup();
+        //setCurrentUser(user)
+       
     }
 
     
@@ -28,8 +32,9 @@ const SignInForm = ()=>{
    
 
     try{
-        const response = await signInAuthUserWithEmailAndPassword(email, password)
-        console.log(response)
+        const {user} = await signInAuthUserWithEmailAndPassword(email, password)
+       
+       //setCurrentUser(user)
         resetFormFields()
         
         //console.log(response)
