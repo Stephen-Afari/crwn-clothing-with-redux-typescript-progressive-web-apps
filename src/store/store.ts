@@ -1,24 +1,25 @@
-import { compose, createStore, applyMiddleware } from "redux";
+import { compose, createStore, applyMiddleware, Middleware } from "redux";
 import { rootReducer } from "./root-reducer";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistStore, persistReducer, PersistConfig } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 import createSagaMiddleware from 'redux-saga'
 import {rootSaga} from './root-saga'
-//import thunk from "redux-thunk";
-//import logger from "redux-logger";
-// const loggerMiddleware = (store) => (next) => (action) => {
-//   if (!action.type) {
-//     return next(action);
-//   }
-//   console.log("type:", action.type);
-//   console.log("payload:", action.payload);
-//   console.log("currentState:", store.getState());
-//   next(action);
-//   console.log("next state:", store.getState());
-// };
+//import { PersistConfig } from "redux-persist";
 
-const persistConfig = {
+export type RootState = ReturnType<typeof rootReducer>
+
+declare global{
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?:typeof compose 
+  }
+}
+
+type ExtendedPersistConfig = PersistConfig<RootState> & {
+  whitelist: (keyof RootState)[]
+}
+
+const persistConfig : ExtendedPersistConfig= {
   key: "root",
   storage,
   whitelist: ["cart"],
@@ -27,9 +28,9 @@ const sagaMiddleware = createSagaMiddleware()
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middlWares = [
-  process.env.NODE_ENV === "development" && logger,
+  process.env.NODE_ENV !== "development" && logger,
   sagaMiddleware,
-].filter(Boolean);
+].filter((middleware): middleware is Middleware=> Boolean(middleware));
 
 // const thunkMiddleware = (store)=>(next)=>(action)=>{
 //   if(typeof(action)==='function'){
@@ -38,7 +39,7 @@ const middlWares = [
 // }
 const composeEnhancer =
   (process.env.NODE_ENV !== "production" &&
-    window & window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
 const composedEnhancers = composeEnhancer(applyMiddleware(...middlWares));

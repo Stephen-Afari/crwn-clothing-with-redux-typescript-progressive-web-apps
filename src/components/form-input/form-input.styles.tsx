@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled, {css, StyledComponent} from 'styled-components'
 
 const subColor = 'grey'
 const mainColor = 'black'
@@ -9,7 +9,11 @@ top: -14px;
 font-size: 12px;
 color: ${mainColor};
 `
-export const FormInputLabel = styled.label
+
+type FormInputLabelProps = {
+  shrink?: boolean
+}
+export const FormInputLabel = styled.label<FormInputLabelProps>
 `
     color: ${subColor};
     font-size: 16px;

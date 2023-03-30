@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import Home from "./routes/home/home.component";
 
-import Navigation from "./routes/home/Navigation/navigation.component.jsx";
+import Navigation from "./routes/home/Navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
@@ -15,7 +15,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(checkUserSession())
+    dispatch(checkUserSession());
   }, []);
 
   return (
