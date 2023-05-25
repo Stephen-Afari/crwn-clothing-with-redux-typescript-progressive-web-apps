@@ -1,4 +1,4 @@
-An Ecommerce app with navigation and routing that takes us to different pages of categories of items on sale. We can add items to our cart, checkout and is integrated with stripe API to handle payments. It is connected to firebase to handle Authentication and storage.
+An Ecommerce app with navigation and routing that takes us to different pages of categories of items on sale. We can add items to our cart, checkout and is integrated with stripe API to handle payments. It is connected to firebase to handle Authentication and storage. This version was implemented using redux, typescript and converted to a Progressive web App
 
 User Interface: Displays the various categories of items on sale. You can click on any of these to display all the related items
 
