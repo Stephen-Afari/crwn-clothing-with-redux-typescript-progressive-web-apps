@@ -1,5 +1,7 @@
 An Ecommerce app with navigation and routing that takes us to different pages of categories of items on sale. We can add items to our cart, checkout and is integrated with stripe API to handle payments. It is connected to firebase to handle Authentication and storage.
+
 User Interface: Displays the various categories of items on sale. You can click on any of these to display all the related items
+
 ![User_Interface](https://github.com/Stephen-Afari/crwn-clothing-with-redux-typescript-progressive-web-apps/assets/62534292/686f7546-f753-4c6d-ade1-c30daabce39e)
 
 Sign In/ Sign Up Page: With a fully fitted firebase backend, you can easily sign up or sign in to enable you view all the view all the items and add preferred ones to the Cart.
@@ -15,6 +17,6 @@ Shop Page: This displays all the individual items on sale under each broad categ
 Add To Cart: You can click on the add to cart button on a given item to transfer your selection into the cart page. You can also see the number of items added to cart in the cart icon
 ![Add_to_Cart_Component](https://github.com/Stephen-Afari/crwn-clothing-with-redux-typescript-progressive-web-apps/assets/62534292/b53022d2-9b2a-4979-ae7c-09d13227e0f7)
 
-Checkout Page: Enables you to view all the selected items added to cart. You can increase or reduce the quantity or remove the item from the cart completed, this immediately updates the quantity displayed in the cart icon. You can also see the total value of all items added to cart calculated below.
+Checkout Page: Enables you to view all the selected items added to cart. You can increase or reduce the quantity or remove the item from the cart component, this immediately updates the quantity displayed in the cart icon. You can also see the total value of all items added to cart calculated below.
 ![CheckOut_Component](https://github.com/Stephen-Afari/crwn-clothing-with-redux-typescript-progressive-web-apps/assets/62534292/8fc51014-1a90-4110-8f97-8f2b7191c216)
 
